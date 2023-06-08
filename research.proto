@@ -1,3 +1,7 @@
+// Use
+// protoc --python_out=. research.proto
+// to build this proto.
+
 syntax = "proto3";
 
 message Research {
