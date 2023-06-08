@@ -1,1 +1,1 @@
-# research
+# GPT research bot.
