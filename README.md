@@ -2,7 +2,7 @@
 
 by K.L. // June 7, 2023
 
-## Concept
+## MVP: General knowledge research
 
 The first problem that I want to tackle is the problem of LLM hallucination. I
 believe that it is incorrect to view LLMs as repositories of factual knowledge.
@@ -27,6 +27,24 @@ requires that you first look up the publication date of his latest novel, and
 then secondly look up events on that date, once that date is known. Each step of
 this process is just basic common sense and can clearly be executed by an LLM.
 
+## Ultimate application: Coding assistance
+
+This idea can be extended further to any database of any kind. Specifically, I
+am most interested in large codebases. One should be able to use an LLM to debug
+errors by reading the code and then recursively tracing the functions throughout
+different files (either by using a code search engine or by traversing the AST),
+gathering all of the relevant information, and then finally synthesizing it to
+provide coding assistance.
+
+For large codebases at large corporations, the abstractions can get quite
+complex and it can be quite difficult and time consuming for engineers to
+decipher how things work. To understand one class can often require tracing
+through several parent classes. Sometimes one doesn't need to understand all of
+those classes completely, one just needs to identify e.g. the relevant parts of
+the relevant ancestor methods. Instead of manually reading all of that code, an
+LLM can read it for you, and extract the relevant parts, and make useful
+suggestions.
+
 ## Related work and differences
 
 This is basically the same as ChatGPT Browse or Bing Search, which force the LLM
@@ -40,7 +58,7 @@ indexed by web search engines, for example legal databases or medical databases.
 Furthermore, information on the web may not be trustworthy and we may want to
 limit our LLM's knowledge base to a smaller set of trustworthy sources. One can
 also imagine that eventually websites themselves will contain prompt injection
-attacks.
+attacks, so we may not want to use the entire web for security reasons.
 
 Another related project is the Berkeley
 [Gorilla](https://gorilla.cs.berkeley.edu/) project, which implements an LLM
@@ -48,22 +66,13 @@ with the ability to call over 1500 different APIs. But Gorilla is built with the
 assumption that one query will only call one API. Our aim here is to be
 maximally general and allow for multiple API calls if needed.
 
-## Further extensions
-
-The MVP implementation is to use knowledge databases, but this idea can be
-extended further to any database of any kind. Specifically, I am most interested
-in large codebases. One should be able to use an LLM to debug errors by reading
-the code and then recursively tracing the functions throughout different files
-(either by using a code search engine or by traversing the AST), gathering all
-of the relevant information, and then finally synthesizing it to provide coding
-assistance.
-
 ## Technical implementation
 
 The Question object consists of:
 
-- An associated string question
-- A list of Researchers, such as WikipediaResearcher, GoogleResearcher, etc.
+- A string question
+- A list of Researchers, such as WikipediaResearcher, GoogleResearcher,
+  WeatherResearcher, RapGeniusResearcher, NYTimesResearcher, etc.
 - A list of Research objects.
   - Each Research object consists of a query, a list of facts corresponding to
     the query, and a source (which Researcher produced this Research).
@@ -71,14 +80,14 @@ The Question object consists of:
 The main method is do_research() which does the following in a loop:
 
 - If research_is_finished(), stop researching.
-- Otherwise, call produce_next_query() which produces a query and selects a
-  Researcher to conduct that research. This method takes into account all the
-  Research produced so far.
+- Otherwise, call plan_next_research(research_so_far) which produces a query and
+  selects a Researcher to conduct research on that query, given all the research
+  collected so far.
 - Given this Researcher and query, call researcher.do_research(question, query)
   and add its output Research into the list of Research done so far.
-  - In the case of WikipediaResearcher, the query can be the name of the
-    Wikipedia article that we want to research and extract all sentences that
-    are relevant to the question.
+  - For example, in the case of WikipediaResearcher, the query can be the name
+    of the Wikipedia article that we want to research, and do_research() can
+    extract all sentences that are relevant to the question from the article.
 
 Now we have produced all the research needed for the question. We finally call
 synthesize_research() on the Question to produce a answer.
