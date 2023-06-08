@@ -1,6 +1,8 @@
-def f():
-  return
+"""Base Researcher class."""
 
+class Researcher:
+  def __init__(self):
+    return
 
-def g():
-  return
+  def do_research(self, question, query):
+    return

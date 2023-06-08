@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message Research {
+  optional string query = 1;
+  repeated string facts = 2;
+  repeated string sources = 3;
+}
