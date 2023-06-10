@@ -143,13 +143,21 @@ external API call (e.g. reading from a Wikipedia page) combined with a GPT call
 
 ## TODOs
 
-- Currently I have only implemented WikipediaResearcher. Implement more
-  Researchers.
-  - To do so, we need do_next_research() to select between researchers.
+- Implement more Researchers. Currently I have only implemented
+  WikipediaResearcher.
+  - To do so, we need do_next_research() to select between Researchers.
     Implement a prompt for that.
-- I have only implemented research that queries wikipedia 3 times, rather than
-  recursively/sequentially. Implement recursive research.
+  - Each Researcher should have a description. The selector prompt should make
+    use of the descriptions.
+- Implement recursive research. I have only implemented research that queries
+  wikipedia 3 times, rather than recursively.
   - Implement RECURSIVE_GET_PAGE_TITLES_PROMPT.
   - Implement research_is_finished.
   - In Question, call the API with the RECURSIVE_GET_PAGE_TITLES_PROMPT for each
     do_next_research() call.
+- Implement quality tracking for each prompt model. Track all inputs and
+  outputs, and a way to evaluate output quality.
+- WikipediaResearcher currently reads 8 paragraphs at a time. Probably there's a
+  smarter way to do this, it requires a lot of API calls which is both expensive
+  and slow. Perhaps we should take embeddings of chunks of text and find
+  relevant text using embeddings.
