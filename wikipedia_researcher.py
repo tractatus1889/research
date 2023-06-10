@@ -85,6 +85,54 @@ def remove_citations(text):
   return clean_text
 
 
+# TODO: Implement RECURSIVE_GET_PAGE_TITLES_PROMPT.
+# It'll be something like:
+# QUESTION: What events happened on the release date of Haruki Murakami's latest
+# novel?
+# KNOWN INFORMATION: Haruki Murakami's latest novel was released on yyyy/mm/dd.
+# NEXT WIKIPEDIA PAGE TITLE TO RESEARCH: yyyy/mm/dd
+
+GET_PAGE_TITLES_PROMPT = """
+I am a researcher, seeking to find the answers to some questions. For each question, I want to gather all the relevant information for the question on Wikipedia. 
+
+For each question, I want you to suggest relevant Wikipedia page titles which might have relevant information for answering the question. Give me at most 3 suggestions. Order them in a list. Don't explain your suggestions.
+
+QUESTION: Where was the director of Pulp Fiction born?
+WIKIPEDIA PAGE TITLES TO RESEARCH:
+1. Pulp Fiction (film)
+2. Quentin Tarantino
+
+QUESTION: {question}
+WIKIPEDIA PAGE TITLES TO RESEARCH:
+"""
+
+
+def get_page_titles(question):
+  response_json = api.get_response(
+      GET_PAGE_TITLES_PROMPT.format(question=question))
+  response = response_json["content"]
+
+  def validate_response(response):
+    page_titles = response.split("\n")
+    if len(page_titles) > 3:
+      return False
+    for ix in range(len(page_titles)):
+      if not page_titles[ix][0:3].startswith(f"{ix+1}. "):
+        return False
+    return True
+
+  print("Researching Wikipedia pages:")
+  print(response)
+  print()
+  assert validate_response(response)
+
+  page_titles = response.split("\n")
+  for ix in range(len(page_titles)):
+    begin = page_titles[ix].index(". ")
+    page_titles[ix] = page_titles[ix][begin + 2:].strip()
+  return page_titles
+
+
 WIKIPEDIA_RESEARCH_PROMPT = """
 I am a researcher, seeking to find the answers to some questions. For each question, I have provided some text and I want to extract relevant snippets from that text. I want you to extract the most relevant snippets from the provided text. The extracted snippet must be an EXACT substring of the original provided text with no modifications. The snippet can be 1 or 2 sentences. Please extract the snippet verbatim, do not abbreviate, do not summarize, do not paraphrase. If there is no relevant snippet, output <NONE>.
 
@@ -153,7 +201,7 @@ class WikipediaResearcher(Researcher):
         else:
           print(f"Invalid extraction: {response}")
       else:
-          research.facts.append(response)
-          print(f"Extracted: {response}")
+        research.facts.append(response)
+        print(f"Extracted: {response}")
 
     return research

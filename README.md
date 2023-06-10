@@ -145,5 +145,11 @@ external API call (e.g. reading from a Wikipedia page) combined with a GPT call
 
 - Currently I have only implemented WikipediaResearcher. Implement more
   Researchers.
-- I have only implemented research that queries wikipedia in parallel 3 times,
-  rather than recursively/sequentially.
+  - To do so, we need do_next_research() to select between researchers.
+    Implement a prompt for that.
+- I have only implemented research that queries wikipedia 3 times, rather than
+  recursively/sequentially. Implement recursive research.
+  - Implement RECURSIVE_GET_PAGE_TITLES_PROMPT.
+  - Implement research_is_finished.
+  - In Question, call the API with the RECURSIVE_GET_PAGE_TITLES_PROMPT for each
+    do_next_research() call.

@@ -5,50 +5,9 @@ python question.py "What bands has Conor Oberst played in?"
 
 Example questions:
 """
-from wikipedia_researcher import WikipediaResearcher
+from wikipedia_researcher import WikipediaResearcher, get_page_titles
 import api
 import sys
-
-GET_PAGE_TITLES_PROMPT = """
-I am a researcher, seeking to find the answers to some questions. For each question, I want to gather all the relevant information for the question on Wikipedia. 
-
-For each question, I want you to suggest relevant Wikipedia page titles which might have relevant information for answering the question. Give me at most 3 suggestions. Order them in a list. Don't explain your suggestions.
-
-QUESTION: Where was the director of Pulp Fiction born?
-WIKIPEDIA PAGE TITLES TO RESEARCH:
-1. Pulp Fiction (film)
-2. Quentin Tarantino
-
-QUESTION: {question}
-WIKIPEDIA PAGE TITLES TO RESEARCH:
-"""
-
-
-def get_page_titles(question):
-  response_json = api.get_response(
-      GET_PAGE_TITLES_PROMPT.format(question=question))
-  response = response_json["content"]
-
-  def validate_response(response):
-    page_titles = response.split("\n")
-    if len(page_titles) > 3:
-      return False
-    for ix in range(len(page_titles)):
-      if not page_titles[ix][0:3].startswith(f"{ix+1}. "):
-        return False
-    return True
-
-  print("Researching Wikipedia pages:")
-  print(response)
-  print()
-  assert validate_response(response)
-
-  page_titles = response.split("\n")
-  for ix in range(len(page_titles)):
-    begin = page_titles[ix].index(". ")
-    page_titles[ix] = page_titles[ix][begin + 2:].strip()
-  return page_titles
-
 
 ANSWER_PROMPT = """
 I am a researcher, seeking to find the answers to some questions. For each question, I have provided some possibly relevant sentences from Wikipedia articles. I want you to use those sentences and those sentences only to answer the question. Every claim you make in your answer must be justified by at least one provided sentence from a Wikipedia article.
@@ -71,8 +30,8 @@ CITATIONS:
 - "LeBron James is the leading scorer in NBA history." from the Wikipedia page List of National Basketball Association career scoring leaders.
 - "His 38,387 career points remained the NBA's career scoring record until February 7, 2023, when he was surpassed by LeBron James of the Lakers in Los Angeles." from the Wikipedia page Kareem Abdul-Jabbar.
 
-QUESTION: %s
-%s
+QUESTION: {question}
+{extracted_sentences}
 ANSWER: (Please remember to include your CITATIONS at the end of your answer.) """
 
 
@@ -90,7 +49,11 @@ class Question:
     self.recursive = False
 
   def research_is_finished(self):
-    # TODO: Implement a smarter (GPT) version of this.
+    # TODO: Implement a smarter (GPT) version of this for the recursive search.
+    # It'll be something like:
+    # QUESTION:
+    # COLLECTED RESEARCH:
+    # IS THIS ENOUGH INFORMATION TO ANSWER THE QUESTION?: YES/NO
     return self.curr_query_ix >= len(self.queries)
 
   def do_next_research(self):
@@ -114,8 +77,10 @@ class Question:
       for fact in research.facts:
         lines.append(f"WIKIPEDIA PAGE TITLE: {page_title}")
         lines.append(f"POSSIBLY RELEVANT SENTENCE: {fact}")
+    extracted_sentences = "\n".join(lines)
 
-    prompt = ANSWER_PROMPT % (self.question, "\n".join(lines))
+    prompt = ANSWER_PROMPT.format(
+        question=self.question, extracted_sentences=extracted_sentences)
     response_json = api.get_response(prompt)
     response = response_json["content"]
     return response
