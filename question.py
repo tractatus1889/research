@@ -1,3 +1,5 @@
+"""Class representing questions."""
+
 class Question:
   def __init__(self, question, researchers):
     self.question = question
@@ -12,6 +14,6 @@ class Question:
     # TODO: Implement this.
     return
 
-  def answer_question():
+  def answer():
     # TODO: Implement this.
     return
