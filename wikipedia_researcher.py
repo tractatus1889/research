@@ -107,12 +107,14 @@ EXTRACTED SNIPPET: (Reminder that the extracted snippet must either be an exact 
 
 
 class WikipediaResearcher(Researcher):
-  def __init__(self, model=api.GPT3P5):
+  def __init__(self, num_paragraphs=8, model=api.GPT3P5):
+    self.num_paragraphs = num_paragraphs
     self.model = model
 
   def do_research(self, question, query):
     url = f"https://en.wikipedia.org/wiki/{query}"
-    # TODO: For now we are extracting the main text, but we should also extract tables.
+    # TODO: For now we only looking at the main text, but we should also extract
+    # tables using extract_tables().
     paragraphs = extract_main_text(url)
     if paragraphs is None:
       return None
@@ -124,9 +126,8 @@ class WikipediaResearcher(Researcher):
     # Skip the first paragraph, which is just the URL.
     paragraphs = paragraphs[1:]
     ix = 0
-    num_paragraphs = 8
     while ix < len(paragraphs):
-      text = "\n".join(paragraphs[ix: ix+num_paragraphs])
+      text = "\n".join(paragraphs[ix: ix+self.num_paragraphs])
       text = remove_citations(text)
       prompt = WIKIPEDIA_RESEARCH_PROMPT.format(
           question=question, provided_text=text)
@@ -140,12 +141,5 @@ class WikipediaResearcher(Researcher):
       if "NONE" not in response:
         research.facts.append(response)
         print(response)
-      ix += num_paragraphs
+      ix += self.num_paragraphs
     return research
-
-
-# wikipedia_researcher = WikipediaResearcher()
-# research = wikipedia_researcher.do_research(
-#     "Where was Caveh Zahedi born?", "Caveh Zahedi")
-
-# print(research)
