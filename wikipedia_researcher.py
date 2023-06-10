@@ -134,12 +134,10 @@ class WikipediaResearcher(Researcher):
 
       enc = tiktoken.encoding_for_model(self.model)
       tokens = enc.encode(prompt)
-      print("prompt token length:", len(tokens))
       response_json = api.get_response(prompt)
       response = response_json["content"]
 
       if "NONE" not in response:
         research.facts.append(response)
-        print(response)
       ix += self.num_paragraphs
     return research
