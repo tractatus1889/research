@@ -8,7 +8,7 @@ class ApiTestCase(unittest.TestCase):
     self.assertNotIn("John", response2["content"])
 
   def test_get_response_continue(self):
-    response1 = api.get_response_continue("My name is Joe.")
+    response1 = api.get_response_continue("My name is John.")
     response2 = api.get_response_continue("What is my name?")
     self.assertIn("John", response2["content"])
 
