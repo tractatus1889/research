@@ -5,6 +5,7 @@ import re
 import api
 import tiktoken
 import research_pb2
+import validation
 
 
 def wiki_search(search_term):
@@ -138,6 +139,7 @@ class WikipediaResearcher(Researcher):
       response = response_json["content"]
 
       if "NONE" not in response:
-        research.facts.append(response)
+        if valid_extraction(response, text):
+          research.facts.append(response)
       ix += self.num_paragraphs
     return research

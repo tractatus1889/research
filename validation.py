@@ -29,6 +29,7 @@ CLAIM: {extracted_text}
 QUESTION: Is the CLAIM justified by the text given in FULL TEXT?
 ANSWER: (Remember to respond with "YES." or "NO.")
 """
-    response = api.get_response(valid_prompt)
+    response_json = api.get_response(valid_prompt)
+    response = response_json["content"]
     assert "YES" in response or "NO" in response
     return "YES" in response
