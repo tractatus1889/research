@@ -1,5 +1,6 @@
 """Class representing questions."""
 from wikipedia_researcher import WikipediaResearcher
+import api
 
 GET_PAGE_TITLES_PROMPT = """
 I am a researcher, seeking to find the answers to some questions. For each question, I want to gather all the relevant information for the question on Wikipedia. 
@@ -30,8 +31,10 @@ def get_page_titles(question):
         return False
     return True
 
-  print(", ".join(response))
   assert validate_response(response)
+  print("Researching Wikipedia pages:")
+  print(response)
+  print()
 
   page_titles = response.split("\n")
   for ix in range(len(page_titles)):
@@ -72,39 +75,44 @@ class Question:
     self.researchers = researchers
     self.research_so_far = []
 
+    print(f"Question: '{self.question}'")
     self.queries = get_page_titles(self.question)
     self.curr_query_ix = 0
 
     # TODO: Implement the recursive case.
     self.recursive = False
 
-  def research_is_finished():
+  def research_is_finished(self):
     # TODO: Implement a smarter (GPT) version of this.
-    return curr_query_ix >= len(queries)
+    return self.curr_query_ix >= len(self.queries)
 
-  def do_next_research():
+  def do_next_research(self):
     query = self.queries[self.curr_query_ix]
     self.curr_query_ix += 1
-    research_so_far.append(researchers[0].do_research(self.question, query))
+    # TODO: Don't assume a single Researcher.
+    print(f"Researching Wikipedia page: {query}")
+    self.research_so_far.append(
+        self.researchers[0].do_research(self.question, query))
+    print()
     return
 
-  def answer():
-    while not research_is_finished():
-      do_next_research()
+  def answer(self):
+    while not self.research_is_finished():
+      self.do_next_research()
 
     lines = []
-    for research in research_so_far:
+    for research in self.research_so_far:
       page_title = research.query
       for fact in research.facts:
         lines.append(f"WIKIPEDIA PAGE TITLE: {page_title}")
         lines.append(f"POSSIBLY RELEVANT SENTENCE: {fact}")
 
-    prompt = ANSWER_PROMPT % (question, "\n".join(lines))
-    print(prompt)
+    prompt = ANSWER_PROMPT % (self.question, "\n".join(lines))
     response_json = api.get_response(prompt)
     response = response_json["content"]
-    return reponse
+    return response
 
 
-q = Question("What was the first book that Barack Obama published?", WikipediaResearcher())
-print(q.answer())
+q = Question("What was the first book that Barack Obama published?",
+             [WikipediaResearcher()])
+print(f"ANSWER: {q.answer()}")
