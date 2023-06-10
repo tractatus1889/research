@@ -38,10 +38,10 @@ def get_page_titles(question):
         return False
     return True
 
-  assert validate_response(response)
   print("Researching Wikipedia pages:")
   print(response)
   print()
+  assert validate_response(response)
 
   page_titles = response.split("\n")
   for ix in range(len(page_titles)):
@@ -98,8 +98,9 @@ class Question:
     self.curr_query_ix += 1
     # TODO: Don't assume a single Researcher.
     print(f"Researching Wikipedia page: {query}")
-    self.research_so_far.append(
-        self.researchers[0].do_research(self.question, query))
+    research = self.researchers[0].do_research(self.question, query)
+    if research is not None:
+      self.research_so_far.append(research)
     print()
     return
 

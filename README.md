@@ -13,19 +13,16 @@ ORGANIZATION = "your-org"
 API_KEY = "your-openai-api-key"
 ```
 
-  - Your organization can be accessed at
-    [https://platform.openai.com/account/org-settings](https://platform.openai.com/account/org-settings).
-  - Your API key can be accessed at
-    [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)
+- Your organization can be accessed at
+  [https://platform.openai.com/account/org-settings](https://platform.openai.com/account/org-settings).
+- Your API key can be accessed at
+  [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)
 
 3. Run:
+
 ```
 python question.py "your-question-here"
 ```
-
-## Examples
-
-Some example output is in the directory `examples/`
 
 ## MVP: General knowledge research
 
@@ -53,6 +50,25 @@ events happened on the day that Haruki Murakami's latest novel was published?"
 requires that you first look up the publication date of his latest novel, and
 then secondly look up events on that date, once that date is known. Each step of
 this process is just basic common sense and can clearly be executed by an LLM.
+
+## Examples
+
+Some example output is in the directory `examples/`.
+
+Noteworthy:
+
+- `examples/turing.txt` contains the question "What did Winston Churchill think
+  of Alan Turing" which our model answers agnostically with NO ANSWER after
+  researching Wikipedia. Indeed,
+  [according to Donald Knuth](https://cs.stanford.edu/~knuth/chatGPT20.txt),
+  there is no evidence that Churchill had any specific opinion or memory of
+  Turing. The point of this example is to demonstrate producing a non-answer
+  when there is no data for an answer, and avoiding hallucination.
+
+- `examples/picasso.txt` contains the question "Why did Jacqueline prevented
+  Picasso's children Claude and Paloma from attending the funeral?" which
+  [Nassim Taleb asked ChatGPT and got a hallucinated answer](https://twitter.com/nntaleb/status/1666298335509053440).
+  Our system instead gives a non-answer, avoiding hallucination.
 
 ## Ultimate application: Coding assistance
 
@@ -124,3 +140,10 @@ Note that research_is_finished() and plan_next_research() will be implemented
 with a GPT call. The Researcher method do_research() will be implemented with an
 external API call (e.g. reading from a Wikipedia page) combined with a GPT call
 (e.g. asking GPT to read the Wikipedia page and extract all relevant sentences).
+
+## TODOs
+
+- Currently I have only implemented WikipediaResearcher. Implement more
+  Researchers.
+- I have only implemented research that queries wikipedia in parallel 3 times,
+  rather than recursively/sequentially.

@@ -1,0 +1,60 @@
+Question: 'What did Winston Churchill think of Alan Turing?'
+Researching Wikipedia pages:
+1. Winston Churchill 
+2. Alan Turing 
+3. Enigma machine
+
+Researching Wikipedia page: Winston Churchill
+Reading 2320 tokens
+Reading 2202 tokens
+Reading 2407 tokens
+Reading 2332 tokens
+Reading 2234 tokens
+Reading 2149 tokens
+Reading 2008 tokens
+Reading 2202 tokens
+Reading 2187 tokens
+Reading 2240 tokens
+Reading 1791 tokens
+Reading 2139 tokens
+Reading 2539 tokens
+Reading 2454 tokens
+Reading 2191 tokens
+Reading 2177 tokens
+Reading 1873 tokens
+Reading 2190 tokens
+Reading 1853 tokens
+Reading 2296 tokens
+Reading 1883 tokens
+
+Researching Wikipedia page: Alan Turing
+Reading 2252 tokens
+Reading 1839 tokens
+Reading 2376 tokens
+Reading 1944 tokens
+Reading 1736 tokens
+Reading 1882 tokens
+Reading 2185 tokens
+Reading 2400 tokens
+Reading 2382 tokens
+Reading 1982 tokens
+Reading 1429 tokens
+
+Researching Wikipedia page: Enigma machine
+Reading 2095 tokens
+Reading 1880 tokens
+Reading 2233 tokens
+Reading 2072 tokens
+Reading 1926 tokens
+Reading 1933 tokens
+Reading 2111 tokens
+Reading 1574 tokens
+Reading 1573 tokens
+Reading 1649 tokens
+Reading 1687 tokens
+Reading 1608 tokens
+Reading 1522 tokens
+Reading 2048 tokens
+Reading 1429 tokens
+
+ANSWER: <NO ANSWER>

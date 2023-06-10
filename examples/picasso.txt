@@ -1,0 +1,36 @@
+Question: 'Why did Jacqueline prevented Picasso's children Claude and Paloma from attending the funeral?'
+Researching Wikipedia pages:
+1. Jacqueline Roque
+2. Pablo Picasso
+3. Claude Picasso
+
+Researching Wikipedia page: Jacqueline Roque
+Reading 2192 tokens
+Reading 1812 tokens
+Extracted and validated: Jacqueline prevented Picasso's children Claude and Paloma Picasso from attending his funeral.
+Reading 1197 tokens
+
+Researching Wikipedia page: Pablo Picasso
+Reading 1977 tokens
+Reading 2392 tokens
+Reading 2018 tokens
+Reading 1937 tokens
+Reading 1496 tokens
+Reading 1590 tokens
+Reading 2014 tokens
+Reading 1877 tokens
+Reading 2185 tokens
+Extracted and validated: Jacqueline prevented his children Claude and Paloma from attending the funeral.
+Reading 2089 tokens
+Reading 2079 tokens
+Reading 1798 tokens
+Reading 1763 tokens
+Extracted and validated: His grandson, Pablito, also died by suicide that same year by ingesting bleach when he was barred by Jacqueline Roque from attending the artist's funeral.
+
+Researching Wikipedia page: Claude Picasso
+Reading 1439 tokens
+
+ANSWER: Jacqueline prevented Picasso's children Claude and Paloma from attending his funeral. There is no information provided in the given sentences that explains why she did so. <NO ANSWER>CITATIONS:
+- "Jacqueline prevented Picasso's children Claude and Paloma Picasso from attending his funeral." from the Wikipedia page Jacqueline Roque.
+- "Jacqueline prevented his children Claude and Paloma from attending the funeral." from the Wikipedia page Pablo Picasso.
+- "His grandson, Pablito, also died by suicide that same year by ingesting bleach when he was barred by Jacqueline Roque from attending the artist's funeral." from the Wikipedia page Pablo Picasso.
