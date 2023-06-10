@@ -2,6 +2,31 @@
 
 by K.L. // June 7, 2023
 
+## Instructions
+
+1. You need an OpenAI account with API access.
+
+2. Create a file `auth.py` with the contents:
+
+```
+ORGANIZATION = "your-org"
+API_KEY = "your-openai-api-key"
+```
+
+  - Your organization can be accessed at
+    [https://platform.openai.com/account/org-settings](https://platform.openai.com/account/org-settings).
+  - Your API key can be accessed at
+    [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)
+
+3. Run:
+```
+python question.py "your-question-here"
+```
+
+## Examples
+
+Some example output is in the directory `examples/`
+
 ## MVP: General knowledge research
 
 The first problem that I want to tackle is the problem of LLM hallucination. I

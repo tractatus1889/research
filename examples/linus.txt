@@ -1,0 +1,55 @@
+Question: 'What software has Linus Torvalds worked on?'
+Researching Wikipedia pages:
+1. Linus Torvalds 
+2. Linux 
+3. Git
+
+Researching Wikipedia page: Linus Torvalds
+Reading 2018 tokens
+Extracted and validated: He is the creator and, historically, the lead developer of the Linux kernel, used by Linux distributions and other operating systems such as Android. He also created the distributed version control system Git.
+Reading 1666 tokens
+Extracted and validated: From 1997 to 1999, he was involved in 86open, helping select the standard binary format for Linux and Unix.
+Reading 1505 tokens
+Extracted and validated: On 3 April 2005, Torvalds began development on Git, version control software that later became widely used.
+Reading 1665 tokens
+Reading 1133 tokens
+
+Researching Wikipedia page: Linux
+Reading 2051 tokens
+Extracted and validated: Linux is an operating system kernel first released on September 17, 1991, by Linus Torvalds.
+Reading 1874 tokens
+Extracted and validated: Torvalds began the development of the Linux kernel on MINIX and applications written for MINIX were also used on Linux.
+Reading 1968 tokens
+Extracted and validated: Linus Torvalds worked on the software project called "Linux".
+Reading 1868 tokens
+Extracted and validated: Linus Torvalds is known for his role in developing the Linux kernel, which became the kernel for operating systems such as the Linux operating system, Android, and Chrome OS.
+Reading 1754 tokens
+Reading 2039 tokens
+Reading 1918 tokens
+Reading 1653 tokens
+Extracted and validated: In the United States, the name Linux is a trademark registered to Linus Torvalds.
+
+Researching Wikipedia page: Git
+Reading 1751 tokens
+Extracted and validated: Git was originally authored by Linus Torvalds in 2005 for development of the Linux kernel, with other kernel developers contributing to its initial development.
+Reading 1147 tokens
+Reading 1567 tokens
+Extracted and validated: Git's design is a synthesis of Torvalds's experience with Linux in maintaining a large distributed development project, along with his intimate knowledge of file-system performance gained from the same project and the urgent need to produce a working system in short order.
+Reading 1445 tokens
+Reading 1588 tokens
+Extracted and validated: Git is primarily developed on Linux, although it also supports most major operating systems, including the BSDs (DragonFly BSD, FreeBSD, NetBSD, and OpenBSD), Solaris, macOS, and Windows.
+Reading 1571 tokens
+Reading 1695 tokens
+Extracted and validated: Linus Torvalds has worked on Git, which uses SHA-1 hashes internally.
+
+ANSWER: Linus Torvalds has worked on the Linux kernel, which he created and was historically the lead developer of. He also created the distributed version control system Git. From 1997 to 1999, he was involved in 86open, helping select the standard binary format for Linux and Unix. Therefore, Linus Torvalds has worked on Linux and Git software projects.
+CITATIONS:
+- "He is the creator and, historically, the lead developer of the Linux kernel, used by Linux distributions and other operating systems such as Android. He also created the distributed version control system Git." from the Wikipedia page Linus Torvalds.
+- "From 1997 to 1999, he was involved in 86open, helping select the standard binary format for Linux and Unix." from the Wikipedia page Linus Torvalds.
+- "On 3 April 2005, Torvalds began development on Git, version control software that later became widely used." from the Wikipedia page Linus Torvalds.
+- "Linux is an operating system kernel first released on September 17, 1991, by Linus Torvalds." from the Wikipedia page Linux.
+- "Linus Torvalds worked on the software project called 'Linux'." from the Wikipedia page Linux.
+- "Linus Torvalds is known for his role in developing the Linux kernel, which became the kernel for operating systems such as the Linux operating system, Android, and Chrome OS." from the Wikipedia page Linux.
+- "In the United States, the name Linux is a trademark registered to Linus Torvalds." from the Wikipedia page Linux.
+- "Git was originally authored by Linus Torvalds in 2005 for development of the Linux kernel, with other kernel developers contributing to its initial development." from the Wikipedia page Git.
+- "Linus Torvalds has worked on Git, which uses SHA-1 hashes internally." from the Wikipedia page Git.

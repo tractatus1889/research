@@ -1,6 +1,13 @@
-"""Class representing questions."""
+"""Class representing questions.
+
+Example usage:
+python question.py "What bands has Conor Oberst played in?"
+
+Example questions:
+"""
 from wikipedia_researcher import WikipediaResearcher
 import api
+import sys
 
 GET_PAGE_TITLES_PROMPT = """
 I am a researcher, seeking to find the answers to some questions. For each question, I want to gather all the relevant information for the question on Wikipedia. 
@@ -113,6 +120,11 @@ class Question:
     return response
 
 
-q = Question("What was the first book that Barack Obama published?",
-             [WikipediaResearcher()])
-print(f"ANSWER: {q.answer()}")
+if __name__ == '__main__':
+  arguments = sys.argv
+  question = arguments[1]
+
+  # TODO: Stop doing all this print() garbage and do it properly.
+  q = Question(question,
+               [WikipediaResearcher()])
+  print(f"ANSWER: {q.answer()}")

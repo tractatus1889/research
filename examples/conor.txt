@@ -1,0 +1,46 @@
+Question: 'What bands has Conor Oberst played in?'
+Researching Wikipedia pages:
+1. Conor Oberst
+2. Bright Eyes 
+3. Desaparecidos
+
+Researching Wikipedia page: Conor Oberst
+Reading 1720 tokens
+Extracted and validated: Conor Mullen Oberst is an American singer-songwriter best known for his work in Bright Eyes. He has also played in several other bands, including Desaparecidos, the Faint (previously named Norman Bailer), Commander Venus, Park Ave., Conor Oberst and the Mystic Valley Band, Monsters of Folk, and Better Oblivion Community Center.
+Reading 1916 tokens
+Extracted and validated: Oberst formed the rock band Commander Venus in 1994 with Tim Kasher, Ben Armstrong, and Robb Nansel.
+Reading 1860 tokens
+Extracted and validated: Oberst is a guitarist and singer for Desaparecidos.
+Reading 1682 tokens
+Extracted and validated: Oberst is one of the founding members of the independent record label Saddle Creek Records.
+Reading 2099 tokens
+Reading 1110 tokens
+
+Researching Wikipedia page: Bright Eyes
+
+Researching Wikipedia page: Desaparecidos
+Reading 1975 tokens
+Reading 1919 tokens
+Reading 2284 tokens
+Reading 2172 tokens
+Reading 2147 tokens
+Reading 2147 tokens
+Reading 2335 tokens
+Reading 1832 tokens
+Reading 2066 tokens
+Reading 1758 tokens
+Reading 1769 tokens
+Reading 1679 tokens
+Reading 1736 tokens
+Reading 1819 tokens
+Reading 1881 tokens
+Reading 1775 tokens
+Reading 1206 tokens
+Hit RateLimitError.
+
+ANSWER: Conor Oberst has played in several bands, including Desaparecidos, the Faint (previously named Norman Bailer), Commander Venus, Park Ave., Conor Oberst and the Mystic Valley Band, Monsters of Folk, and Better Oblivion Community Center. 
+CITATIONS:
+- "Conor Mullen Oberst is an American singer-songwriter best known for his work in Bright Eyes. He has also played in several other bands, including Desaparecidos, the Faint (previously named Norman Bailer), Commander Venus, Park Ave., Conor Oberst and the Mystic Valley Band, Monsters of Folk, and Better Oblivion Community Center." from the Wikipedia page Conor Oberst.
+- "Oberst formed the rock band Commander Venus in 1994 with Tim Kasher, Ben Armstrong, and Robb Nansel." from the Wikipedia page Conor Oberst.
+- "Oberst is a guitarist and singer for Desaparecidos." from the Wikipedia page Conor Oberst.
+- "Oberst is one of the founding members of the independent record label Saddle Creek Records." from the Wikipedia page Conor Oberst.
