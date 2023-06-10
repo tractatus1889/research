@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0eresearch.proto\"H\n\x08Research\x12\x12\n\x05query\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\r\n\x05\x66\x61\x63ts\x18\x02 \x03(\t\x12\x0f\n\x07sources\x18\x03 \x03(\tB\x08\n\x06_queryb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0eresearch.proto\"W\n\x08Research\x12\x12\n\x05query\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\r\n\x05\x66\x61\x63ts\x18\x02 \x03(\t\x12\x13\n\x06source\x18\x03 \x01(\tH\x01\x88\x01\x01\x42\x08\n\x06_queryB\t\n\x07_sourceb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -22,5 +22,5 @@ if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   _globals['_RESEARCH']._serialized_start=18
-  _globals['_RESEARCH']._serialized_end=90
+  _globals['_RESEARCH']._serialized_end=105
 # @@protoc_insertion_point(module_scope)

@@ -86,9 +86,8 @@ The main method is do_research() which does the following in a loop:
 - Otherwise, call plan_next_research() which produces a query and selects a
   Researcher to conduct research on that query, given all the research collected
   so far.
-- Given this Researcher and query, call researcher.do_research(question, query,
-  research_so_far) and add its output Research into the list of Research done so
-  far.
+- Given this Researcher and query, call researcher.do_research(question, query)
+  and add its output Research into the list of Research done so far.
   - For example, in the case of WikipediaResearcher, the query can be the name
     of the Wikipedia article that we want to research, and do_research() can
     extract all sentences that are relevant to the question from the article.
