@@ -14,8 +14,8 @@ openai.api_key = auth.API_KEY
 
 GPT4 = "gpt-4"
 GPT3P5 = "gpt-3.5-turbo"
-CURRENT_DATE = datetime.datetime.now()
-FORMATTED_DATE = current_date.strftime("%B %d, %Y")
+CURRENT_DATE = datetime.now()
+FORMATTED_DATE = CURRENT_DATE.strftime("%B %d, %Y")
 SYSTEM_INIT = f"You are a helpful assistant. Today's date is {FORMATTED_DATE}."
 CONVERSATION = [
     {"role": "system", "content": SYSTEM_INIT},
