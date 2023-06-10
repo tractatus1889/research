@@ -111,6 +111,7 @@ class WikipediaResearcher(Researcher):
   def __init__(self, num_paragraphs=8, model=api.GPT3P5):
     self.num_paragraphs = num_paragraphs
     self.model = model
+    self.validate = True
 
   def do_research(self, question, query):
     url = f"https://en.wikipedia.org/wiki/{query}"
@@ -126,23 +127,33 @@ class WikipediaResearcher(Researcher):
 
     # Skip the first paragraph, which is just the URL.
     paragraphs = paragraphs[1:]
-    ix = 0
-    while ix < len(paragraphs):
+    p_ix = 0
+    while p_ix < len(paragraphs):
       # TODO: This isn't a good way to do it. There's no guarantee that the
       # num_paragraphs is below the max number of tokens.
-      # To compute the number of tokens, use:
-      #   enc = tiktoken.encoding_for_model(self.model)
-      #   tokens = enc.encode(prompt)
-      text = "\n".join(paragraphs[ix: ix + self.num_paragraphs])
+      text = "\n".join(paragraphs[p_ix: p_ix + self.num_paragraphs])
       text = remove_citations(text)
       prompt = WIKIPEDIA_RESEARCH_PROMPT.format(
           question=question, provided_text=text)
+      enc = tiktoken.encoding_for_model(self.model)
+      tokens = enc.encode(prompt)
+      print(f"Reading {len(tokens)} tokens")
 
       response_json = api.get_response(prompt)
       response = response_json["content"]
 
-      if "NONE" not in response:
-        if valid_extraction(response, text):
+      p_ix += self.num_paragraphs
+      if "NONE" in response:
+        continue
+
+      if self.validate:
+        if validation.validate_extraction(response, text):
           research.facts.append(response)
-      ix += self.num_paragraphs
+          print(f"Extracted and validated: {response}")
+        else:
+          print(f"Invalid extraction: {response}")
+      else:
+          research.facts.append(response)
+          print(f"Extracted: {response}")
+
     return research

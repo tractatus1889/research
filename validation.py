@@ -1,7 +1,7 @@
 import api
 
-def valid_extraction(extracted_text, full_text):
-    valid_prompt = f"""
+def validate_extraction(extracted_text, full_text):
+    validate_prompt = f"""
 You are a very meticulous fact-checker. You will be provided with a FULL TEXT and a CLAIM and your task is to check whether the CLAIM follows from the FULL TEXT, and to give a reason why.
 
 FULL TEXT: Softdisk, a computer company in Shreveport, Louisiana, hired Carmack to work on Softdisk G-S (an Apple IIGS publication), introducing him to John Romero and other future key members of id Software such as Adrian Carmack (not related). Later, Softdisk would place this team in charge of a new, but short-lived, bi-monthly game subscription product called Gamer's Edge for the IBM PC (DOS) platform. In 1990, while still at Softdisk, Carmack, Romero, and others created the first of the Commander Keen games, a series that was published by Apogee Software, under the shareware distribution model, from 1991 onwards.[10] Afterwards, Carmack left Softdisk to co-found id Software.[11]
@@ -29,7 +29,7 @@ CLAIM: {extracted_text}
 QUESTION: Is the CLAIM justified by the text given in FULL TEXT?
 ANSWER: (Remember to respond with "YES." or "NO.")
 """
-    response_json = api.get_response(valid_prompt)
+    response_json = api.get_response(validate_prompt)
     response = response_json["content"]
     assert "YES" in response or "NO" in response
     return "YES" in response

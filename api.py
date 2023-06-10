@@ -2,7 +2,6 @@
 
 import datetime
 import time
-import wiki
 from datetime import datetime
 import openai
 import os
@@ -19,7 +18,8 @@ FORMATTED_DATE = CURRENT_DATE.strftime("%B %d, %Y")
 SYSTEM_INIT = f"You are a helpful assistant. Today's date is {FORMATTED_DATE}."
 
 # TODO: Make a class that tracks these, don't put these in a global variable
-# like this.
+# like this. It's worth making a test class also, so we can test without 
+# hitting the API.
 CONVERSATION = [
     {"role": "system", "content": SYSTEM_INIT},
 ]
