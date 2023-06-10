@@ -133,7 +133,7 @@ class WikipediaResearcher(Researcher):
       # To compute the number of tokens, use:
       #   enc = tiktoken.encoding_for_model(self.model)
       #   tokens = enc.encode(prompt)
-      text = "\n".join(paragraphs[ix: ix+self.num_paragraphs])
+      text = "\n".join(paragraphs[ix: ix + self.num_paragraphs])
       text = remove_citations(text)
       prompt = WIKIPEDIA_RESEARCH_PROMPT.format(
           question=question, provided_text=text)
