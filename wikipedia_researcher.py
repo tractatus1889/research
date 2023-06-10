@@ -128,13 +128,16 @@ class WikipediaResearcher(Researcher):
     paragraphs = paragraphs[1:]
     ix = 0
     while ix < len(paragraphs):
+      # TODO: This isn't a good way to do it. There's no guarantee that the
+      # num_paragraphs is below the max number of tokens.
+      # To compute the number of tokens, use:
+      #   enc = tiktoken.encoding_for_model(self.model)
+      #   tokens = enc.encode(prompt)
       text = "\n".join(paragraphs[ix: ix+self.num_paragraphs])
       text = remove_citations(text)
       prompt = WIKIPEDIA_RESEARCH_PROMPT.format(
           question=question, provided_text=text)
 
-      enc = tiktoken.encoding_for_model(self.model)
-      tokens = enc.encode(prompt)
       response_json = api.get_response(prompt)
       response = response_json["content"]
 
