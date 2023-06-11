@@ -75,18 +75,17 @@ Full example output is in the directory `examples/`.
 
   `ANSWER: <NO ANSWER>`
 
-  Indeed,
-  [according to Donald Knuth](https://cs.stanford.edu/~knuth/chatGPT20.txt),
+  [According to Donald Knuth](https://cs.stanford.edu/~knuth/chatGPT20.txt),
   there is no evidence that Churchill had any specific opinion or memory of
-  Turing. The point of this example is to demonstrate producing a non-answer
-  when there is no data for an answer, and avoiding hallucination.
+  Turing. The point of this example is to demonstrate that we produce a
+  non-answer when we have no data for an answer, avoiding hallucination.
 
 - Why did Jacqueline prevent Picasso's children Claude and Paloma from attending
   the funeral?
 
   `ANSWER: Jacqueline prevented Picasso's children Claude and Paloma from attending his funeral. There is no information provided that explains why she did so. <NO ANSWER>`
 
-  [Nassim Taleb asked ChatGPT and got a hallucinated answer](https://twitter.com/nntaleb/status/1666298335509053440).
+  [Nassim Taleb asked this question to ChatGPT and got a hallucinated answer](https://twitter.com/nntaleb/status/1666298335509053440).
   Our system instead gives a non-answer, avoiding hallucination.
 
 ## Ultimate application: Coding assistance
