@@ -161,3 +161,8 @@ external API call (e.g. reading from a Wikipedia page) combined with a GPT call
   smarter way to do this, it requires a lot of API calls which is both expensive
   and slow. Perhaps we should take embeddings of chunks of text and find
   relevant text using embeddings.
+- WikipediaResearcher currently only looks at paragraphs in the wikipedia page.
+  We should also look at tables. I am not really sure how well LLMs perform on
+  tabular data. It would be interesting to investigate.
+- Include section titles in the wikipedia data.
+- Include the "key facts" box in the wikipedia data.
