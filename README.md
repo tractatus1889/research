@@ -192,3 +192,8 @@ external API call (e.g. reading from a Wikipedia page) combined with a GPT call
 - Include the "key facts" box in the wikipedia data.
 - Try implementing this in
   [LangChain](https://python.langchain.com/en/latest/index.html).
+- Use this
+  [trick](https://github.com/minimaxir/simpleaichat/blob/main/PROMPTS.md#call-1)
+  to make GPT outputs more reliable (e.g. output digits only):
+  [code](https://github.com/minimaxir/simpleaichat/blob/ddf02ed5481d73d7e5ebe389aaca94c6a8a2a759/simpleaichat/chatgpt.py#L139).
+  Also look into [Guidance](https://github.com/microsoft/guidance).
