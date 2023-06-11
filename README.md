@@ -63,6 +63,10 @@ Full example output is in the directory `examples/`.
 
   `CITATIONS: "He is the creator and, historically, the lead developer of the Linux kernel, used by Linux distributions and other operating systems such as Android. He also created the distributed version control system Git." from the Wikipedia page Linus Torvalds.`
 
+  `"From 1997 to 1999, he was involved in 86open, helping select the standard binary format for Linux and Unix." from the Wikipedia page Linus Torvalds.`
+
+  `"On 3 April 2005, Torvalds began development on Git, version control software that later became widely used." from the Wikipedia page Linus Torvalds.`
+
 - What was the first book that Barack Obama published?
 
   `ANSWER: The first book that Barack Obama published was Dreams from My Father.`
