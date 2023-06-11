@@ -108,19 +108,25 @@ suggestions.
 
 ## Related work and differences
 
-This is basically the same as ChatGPT Browse, ChatGPT Plug-ins, or Bing Search,
+This is basically the same as ChatGPT Browse, ChatGPT Plugins, or Bing Search,
 which force the LLM to cite its answers from the web. ChatGPT Browse is also
 already able to research questions in a recursive fashion:
 [example](https://chat.openai.com/share/1c2a4082-d566-4e0f-9477-a44e9865b2c6).
+
 One difference here is that I want to extend the idea so that it can use any
-API, not just the single API of Bing Search. Although the web contains nearly
-"all" possible information, there are still plenty of databases that are not
-indexed by web search engines, for example legal databases or medical databases,
-or internal corporate documentation. Furthermore, information on the web may not
-be trustworthy and we may want to limit our LLM's knowledge base to a smaller
-set of trustworthy sources. One can also imagine that eventually websites
-themselves will contain prompt injection attacks, so we may not want to use the
-entire web for security reasons.
+API, not just the single API of Bing Search, or the pre-defined APIs of ChatGPT
+Plugins. Although the web contains nearly "all" possible information, there are
+still plenty of databases that are not indexed by web search engines, for
+example legal databases or medical databases, or internal corporate
+documentation. Furthermore, information on the web may not be trustworthy and we
+may want to limit our LLM's knowledge base to a smaller set of trustworthy
+sources. One can also imagine that eventually websites themselves will contain
+prompt injection attacks, so we may not want to use the entire web for security
+reasons.
+
+Another difference is that I intend to make a stricter requirement that every
+claim is cited, whereas ChatGPT Browse or Bing Search do not seem to have such a
+strict requirement.
 
 Another related project is the Berkeley
 [Gorilla](https://gorilla.cs.berkeley.edu/) project, which implements an LLM
@@ -184,3 +190,5 @@ external API call (e.g. reading from a Wikipedia page) combined with a GPT call
   tabular data. It would be interesting to investigate.
 - Include section titles in the wikipedia data.
 - Include the "key facts" box in the wikipedia data.
+- Try implementing this in
+  [LangChain](https://python.langchain.com/en/latest/index.html).
