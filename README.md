@@ -53,20 +53,39 @@ this process is just basic common sense and can clearly be executed by an LLM.
 
 ## Examples
 
-Some example output is in the directory `examples/`.
+Full example output is in the directory `examples/`.
 
-Noteworthy:
+### True positives
 
-- `examples/turing.txt` contains the question "What did Winston Churchill think
-  of Alan Turing" which our model answers agnostically with NO ANSWER after
-  researching Wikipedia. Indeed,
+- What software has Linus Torvalds worked on?
+
+  `ANSWER: Linus Torvalds has worked on the Linux kernel, which he created and was historically the lead developer of. He also created the distributed version control system Git. From 1997 to 1999, he was involved in 86open, helping select the standard binary format for Linux and Unix. Therefore, Linus Torvalds has worked on Linux and Git software projects.`
+
+  `CITATIONS: "He is the creator and, historically, the lead developer of the Linux kernel, used by Linux distributions and other operating systems such as Android. He also created the distributed version control system Git." from the Wikipedia page Linus Torvalds.`
+
+- What was the first book that Barack Obama published?
+
+  `ANSWER: The first book that Barack Obama published was Dreams from My Father.`
+
+  `CITATIONS: "Obama has published three bestselling books: Dreams from My Father (1995), The Audacity of Hope (2006) and A Promised Land (2020)." from the Wikipedia page Barack Obama.`
+
+### True negatives
+
+- What did Winston Churchill think of Alan Turing?
+
+  `ANSWER: <NO ANSWER>`
+
+  Indeed,
   [according to Donald Knuth](https://cs.stanford.edu/~knuth/chatGPT20.txt),
   there is no evidence that Churchill had any specific opinion or memory of
   Turing. The point of this example is to demonstrate producing a non-answer
   when there is no data for an answer, and avoiding hallucination.
 
-- `examples/picasso.txt` contains the question "Why did Jacqueline prevented
-  Picasso's children Claude and Paloma from attending the funeral?" which
+- Why did Jacqueline prevent Picasso's children Claude and Paloma from attending
+  the funeral?
+
+  `ANSWER: Jacqueline prevented Picasso's children Claude and Paloma from attending his funeral. There is no information provided that explains why she did so. <NO ANSWER>`
+
   [Nassim Taleb asked ChatGPT and got a hallucinated answer](https://twitter.com/nntaleb/status/1666298335509053440).
   Our system instead gives a non-answer, avoiding hallucination.
 
