@@ -101,53 +101,90 @@ Full example output is in the directory `examples/`.
 ### True positive: What songs by the Goo Goo Dolls has Phoebe Bridgers covered?
 
 [ChatGPT answer](https://chat.openai.com/share/bc66cda8-31ba-4205-9173-be2a3d469dfb):
-`As of my knowledge cutoff in September 2021, Phoebe Bridgers has not officially covered any songs by the Goo Goo Dolls.`
+
+> As of my knowledge cutoff in September 2021, Phoebe Bridgers has not
+> officially covered any songs by the Goo Goo Dolls.
 
 The truth:
-[Phoebe Bridgers' cover of "Iris"](https://soundcloud.com/bruh-bruh-629710116/iris-phoebe-bridgers-and-maggie-rogers)
-was released on November 13, 2020.
 
-Our system's answer: `Phoebe Bridgers has covered "Iris" by Goo Goo Dolls. `
+> [Phoebe Bridgers' cover of "Iris"](https://soundcloud.com/bruh-bruh-629710116/iris-phoebe-bridgers-and-maggie-rogers)
+> was released on November 13, 2020.
 
-`CITATIONS:`
+Our system's answer:
 
-`"Phoebe Bridgers covered "Iris" by Goo Goo Dolls." from the Wikipedia page Phoebe Bridgers.`
-
-`"Phoebe Bridgers' cover of "Iris" as a single specifically raised money for Stacey Abrams' Fair Fight Action." from the Wikipedia page Phoebe Bridgers.`
+> Phoebe Bridgers has covered "Iris" by Goo Goo Dolls.
+>
+> CITATIONS:
+>
+> "Phoebe Bridgers covered "Iris" by Goo Goo Dolls." from the Wikipedia page
+> Phoebe Bridgers.
+>
+> "Phoebe Bridgers' cover of "Iris" as a single specifically raised money for
+> Stacey Abrams' Fair Fight Action." from the Wikipedia page Phoebe Bridgers.
 
 ### True positive: What has Conor Oberst said about Elliott Smith?
 
 [ChatGPT answer](https://chat.openai.com/share/c4b6d1ec-3c4d-411a-8bec-959964eb2dbc):
-`As of my knowledge cutoff in September 2021, Conor Oberst, the American musician and songwriter, has expressed his admiration for Elliott Smith on several occasions. Conor Oberst has referred to Elliott Smith as one of his musical influences and has praised his songwriting skills.`
 
-`In an interview with The A.V. Club in 2005, Oberst mentioned Elliott Smith as someone he looked up to, saying, "I think he's one of the greatest songwriters of our generation. I'd put him up there with Dylan or any of those guys. And his playing and his guitar playing are also really unique." He further acknowledged Smith's ability to capture complex emotions through his lyrics.`
+> As of my knowledge cutoff in September 2021, Conor Oberst, the American
+> musician and songwriter, has expressed his admiration for Elliott Smith on
+> several occasions. Conor Oberst has referred to Elliott Smith as one of his
+> musical influences and has praised his songwriting skills.
+>
+> In an interview with The A.V. Club in 2005, Oberst mentioned Elliott Smith as
+> someone he looked up to, saying, "I think he's one of the greatest songwriters
+> of our generation. I'd put him up there with Dylan or any of those guys. And
+> his playing and his guitar playing are also really unique." He further
+> acknowledged Smith's ability to capture complex emotions through his lyrics.`
 
-The truth: There is
-[no interview with Conor Oberst](https://www.avclub.com/search?q=conor%20oberst)
-in The A.V. Club in 2005.
+The truth:
+
+> There is
+> [no interview with Conor Oberst](https://www.avclub.com/search?q=conor%20oberst)
+> in The A.V. Club in 2005.
 
 Our system's answer:
-`Conor Oberst has said that Elliott Smith wrote the "sweetest, saddest, most gentle songs" in an October 22, 2003 All Things Considered interview. `
 
-`CITATIONS:`
-
-`"Oberst was greatly influenced by Daniel Johnston, whose "Devil Town" was covered and featured on Noise Floor, and profoundly influenced by Elliott Smith, stating in an October 22, 2003 All Things Considered interview that, "sometimes when you're not feeling good, you have to listen to really sad music like Elliott Smith's" and that [Smith] "wrote the sweetest, saddest, most gentle songs"." from the Wikipedia page Conor Oberst.`
+> Conor Oberst has said that Elliott Smith wrote the "sweetest, saddest, most
+> gentle songs" in an October 22, 2003 All Things Considered interview.
+>
+> CITATIONS:
+>
+> "Oberst was greatly influenced by Daniel Johnston, whose "Devil Town" was
+> covered and featured on Noise Floor, and profoundly influenced by Elliott
+> Smith, stating in an October 22, 2003 All Things Considered interview that,
+> "sometimes when you're not feeling good, you have to listen to really sad
+> music like Elliott Smith's" and that [Smith] "wrote the sweetest, saddest,
+> most gentle songs"." from the Wikipedia page Conor Oberst.
 
 ### True negative: What did Winston Churchill think of Alan Turing?
 
 [ChatGPT answer](https://chat.openai.com/share/95f26ef5-8ad5-40df-8dab-2fed661491c7):
-`Churchill recognized Turing's accomplishments and acknowledged his contributions. After the war, Churchill reportedly referred to Turing as having made the single biggest contribution to Allied victory in the war through his code-breaking efforts. Turing's work was highly classified during the war, so the full extent of his achievements only became widely known later.`
+
+> Churchill recognized Turing's accomplishments and acknowledged his
+> contributions. After the war, Churchill reportedly referred to Turing as
+> having made the single biggest contribution to Allied victory in the war
+> through his code-breaking efforts. Turing's work was highly classified during
+> the war, so the full extent of his achievements only became widely known
+> later.
 
 The truth:
-[According to Donald Knuth](https://cs.stanford.edu/~knuth/chatGPT20.txt), there
-is no evidence that Churchill had any specific opinion or memory of Turing.
 
-Our system's answer: `ANSWER: <NO ANSWER>`
+> [According to Donald Knuth](https://cs.stanford.edu/~knuth/chatGPT20.txt),
+> there is no evidence that Churchill had any specific opinion or memory of
+> Turing.
+
+Our system's answer:
+
+> NO ANSWER
 
 ### True negative: Why did Jacqueline prevent Picasso's children Claude and Paloma from attending his funeral?
 
 Our system's answer:
-`ANSWER: Jacqueline prevented Picasso's children Claude and Paloma from attending his funeral. There is no information provided that explains why she did so. <NO ANSWER>`
+
+> ANSWER: Jacqueline prevented Picasso's children Claude and Paloma from
+> attending his funeral. There is no information provided that explains why she
+> did so. NO ANSWER
 
 ## Related work and differences
 
