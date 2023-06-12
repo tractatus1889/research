@@ -2,6 +2,76 @@
 
 by K.L. // June 7, 2023
 
+## Problem statement
+
+LLMs are very simple: They are statistical next-token predictors. However, their
+output is not necessarily grounded in fact, a phenomenon commonly known as
+"hallucination".
+
+For example, when you ask ChatGPT the question:
+
+> Why did Jacqueline prevent Picasso's children Claude and Paloma from attending
+> his funeral?
+
+[It responds](https://chat.openai.com/share/b565b242-057b-4785-964b-f4884401b94c):
+
+> There is no documented evidence to suggest that Jacqueline Roque, Pablo
+> Picasso's second wife, prevented his children Claude and Paloma from attending
+> his funeral. In fact, both Claude and Paloma did attend their father's funeral
+> in 1973.
+
+However, ChatGPT's response is false, as the
+[Wikipedia page for Jacqueline Roque](https://en.wikipedia.org/wiki/Jacqueline_Roque)
+states:
+
+> After Picasso's death, Jacqueline prevented his children Claude and Paloma
+> Picasso from attending his funeral.
+
+## Prototype: General knowledge research
+
+LLMs are not repositories of factual knowledge. If you ask a plausible-sounding
+question, then you will get a plausible-sounding answer. But a
+plausible-sounding answer does not make a correct or true answer.
+
+How do humans answer questions they don’t know the answer to? They research the
+question.
+
+How can we give LLMs the same power? Force the LLM to research all of its
+answers, and to give citations for every claim that it makes. This research can
+be done in an iterative fashion, querying the factual databases recursively as
+needed.
+
+For example, answering the question
+
+> What other events happened on the day that Haruki Murakami's latest novel was
+> published?
+
+requires that you first look up the publication date of his latest novel, and
+then secondly look up events that happened on that date.
+
+Instead of thinking of LLMs as agents that know _everything_, we can think of
+them as agents that know _nothing_, but give them the ability to research their
+questions via access to factual databases. By using LLMs as a "glue layer" on
+top of these databases, we can answer questions with _evidence_, and thus
+prevent hallucinations that are just statistically likely combinations of words.
+
+This idea can be extended further to any database of any kind.
+
+## Future extension: Coding assistance for large codebases
+
+Large codebases can also be viewed as databases. We should be able to engineer a
+similar setup wherein an LLM can debug errors in code by searching through
+relevant files (either by using a code search engine or by traversing the AST),
+gathering all of the relevant information, and finally synthesizing that
+information to provide coding assistance.
+
+Concretely, for large codebases at large corporations, the abstractions can get
+quite complex and it can be quite difficult and time consuming for engineers to
+decipher how things work. To understand one class can often require tracing
+through many parent classes. Instead of a human engineer manually reading all of
+that code, an LLM can read it for you, and extract the relevant parts, and make
+useful suggestions.
+
 ## Instructions
 
 1. You need an OpenAI account with API access.
@@ -21,94 +91,63 @@ API_KEY = "your-openai-api-key"
 3. Run:
 
 ```
-python question.py "your-question-here"
+python question.py "your question here"
 ```
-
-## MVP: General knowledge research
-
-The first problem that I want to tackle is the problem of LLM hallucination. I
-believe that it is incorrect to view LLMs as repositories of factual knowledge.
-If you ask a plausible-sounding question, then you will get a plausible-sounding
-answer. But a plausible-sounding answer does not make a correct or true answer.
-
-I believe that instead it is better to use LLMs as a "glue layer" on top of
-factual databases. Instead of thinking of LLMs as agents that know _everything_,
-I think it is better to think of them as agents that know _nothing_, but that
-have ordinary common sense.
-
-Humans who know no facts about a domain can still utilize factual databases to
-research and answer questions about that domain, using their common sense. So
-the solution to the problem of hallucination is to engineer a setup wherein the
-LLM is forced to research all of its answers, and to give citations for every
-claim that it makes. An important point to make here is that the system must be
-allowed to give negative answers, or non-answers, when there isn't enough
-information to give a definitive response.
-
-Furthermore, this research can be done in an iterative fashion, querying the
-factual databases recursively as needed. For example, for the query "What other
-events happened on the day that Haruki Murakami's latest novel was published?"
-requires that you first look up the publication date of his latest novel, and
-then secondly look up events on that date, once that date is known. Each step of
-this process is just basic common sense and can clearly be executed by an LLM.
 
 ## Examples
 
 Full example output is in the directory `examples/`.
 
-### True positives
+### True positive: What songs by the Goo Goo Dolls has Phoebe Bridgers covered?
 
-- What software has Linus Torvalds worked on?
+[ChatGPT answer](https://chat.openai.com/share/bc66cda8-31ba-4205-9173-be2a3d469dfb):
+`As of my knowledge cutoff in September 2021, Phoebe Bridgers has not officially covered any songs by the Goo Goo Dolls.`
 
-  `ANSWER: Linus Torvalds has worked on the Linux kernel, which he created and was historically the lead developer of. He also created the distributed version control system Git. From 1997 to 1999, he was involved in 86open, helping select the standard binary format for Linux and Unix. Therefore, Linus Torvalds has worked on Linux and Git software projects.`
+The truth:
+[Phoebe Bridgers' cover of "Iris"](https://soundcloud.com/bruh-bruh-629710116/iris-phoebe-bridgers-and-maggie-rogers)
+was released on November 13, 2020.
 
-  `CITATIONS: "He is the creator and, historically, the lead developer of the Linux kernel, used by Linux distributions and other operating systems such as Android. He also created the distributed version control system Git." from the Wikipedia page Linus Torvalds.`
+Our system's answer: `Phoebe Bridgers has covered "Iris" by Goo Goo Dolls. `
 
-  `"From 1997 to 1999, he was involved in 86open, helping select the standard binary format for Linux and Unix." from the Wikipedia page Linus Torvalds.`
+`CITATIONS:`
 
-  `"On 3 April 2005, Torvalds began development on Git, version control software that later became widely used." from the Wikipedia page Linus Torvalds.`
+`"Phoebe Bridgers covered "Iris" by Goo Goo Dolls." from the Wikipedia page Phoebe Bridgers.`
 
-- What was the first book that Barack Obama published?
+`"Phoebe Bridgers' cover of "Iris" as a single specifically raised money for Stacey Abrams' Fair Fight Action." from the Wikipedia page Phoebe Bridgers.`
 
-  `ANSWER: The first book that Barack Obama published was Dreams from My Father.`
+### True positive: What has Conor Oberst said about Elliott Smith?
 
-  `CITATIONS: "Obama has published three bestselling books: Dreams from My Father (1995), The Audacity of Hope (2006) and A Promised Land (2020)." from the Wikipedia page Barack Obama.`
+[ChatGPT answer](https://chat.openai.com/share/c4b6d1ec-3c4d-411a-8bec-959964eb2dbc):
+`As of my knowledge cutoff in September 2021, Conor Oberst, the American musician and songwriter, has expressed his admiration for Elliott Smith on several occasions. Conor Oberst has referred to Elliott Smith as one of his musical influences and has praised his songwriting skills.`
 
-### True negatives
+`In an interview with The A.V. Club in 2005, Oberst mentioned Elliott Smith as someone he looked up to, saying, "I think he's one of the greatest songwriters of our generation. I'd put him up there with Dylan or any of those guys. And his playing and his guitar playing are also really unique." He further acknowledged Smith's ability to capture complex emotions through his lyrics.`
 
-- What did Winston Churchill think of Alan Turing?
+The truth: There is
+[no interview with Conor Oberst](https://www.avclub.com/search?q=conor%20oberst)
+in The A.V. Club in 2005.
 
-  `ANSWER: <NO ANSWER>`
+Our system's answer:
+`Conor Oberst has said that Elliott Smith wrote the "sweetest, saddest, most gentle songs" in an October 22, 2003 All Things Considered interview. `
 
-  [According to Donald Knuth](https://cs.stanford.edu/~knuth/chatGPT20.txt),
-  there is no evidence that Churchill had any specific opinion or memory of
-  Turing. The point of this example is to demonstrate that we produce a
-  non-answer when we have no data for an answer, avoiding hallucination.
+`CITATIONS:`
 
-- Why did Jacqueline prevent Picasso's children Claude and Paloma from attending
-  the funeral?
+`"Oberst was greatly influenced by Daniel Johnston, whose "Devil Town" was covered and featured on Noise Floor, and profoundly influenced by Elliott Smith, stating in an October 22, 2003 All Things Considered interview that, "sometimes when you're not feeling good, you have to listen to really sad music like Elliott Smith's" and that [Smith] "wrote the sweetest, saddest, most gentle songs"." from the Wikipedia page Conor Oberst.`
 
-  `ANSWER: Jacqueline prevented Picasso's children Claude and Paloma from attending his funeral. There is no information provided that explains why she did so. <NO ANSWER>`
+### True negative: What did Winston Churchill think of Alan Turing?
 
-  [Nassim Taleb asked this question to ChatGPT and got a hallucinated answer](https://twitter.com/nntaleb/status/1666298335509053440).
-  Our system instead gives a non-answer, avoiding hallucination.
+[ChatGPT answer](https://chat.openai.com/share/95f26ef5-8ad5-40df-8dab-2fed661491c7):
+`Churchill recognized Turing's accomplishments and acknowledged his contributions. After the war, Churchill reportedly referred to Turing as having made the single biggest contribution to Allied victory in the war through his code-breaking efforts. Turing's work was highly classified during the war, so the full extent of his achievements only became widely known later.`
 
-## Ultimate application: Coding assistance
+The truth:
+[According to Donald Knuth](https://cs.stanford.edu/~knuth/chatGPT20.txt), there
+is no evidence that Churchill had any specific opinion or memory of Turing.
 
-This idea can be extended further to any database of any kind. Specifically, I
-am most interested in large codebases. One should be able to use an LLM to debug
-errors by reading the code and then recursively tracing the functions throughout
-different files (either by using a code search engine or by traversing the AST),
-gathering all of the relevant information, and then finally synthesizing it to
-provide coding assistance.
+Our system's answer: `ANSWER: <NO ANSWER>`
 
-For large codebases at large corporations, the abstractions can get quite
-complex and it can be quite difficult and time consuming for engineers to
-decipher how things work. To understand one class can often require tracing
-through several parent classes. Sometimes one doesn't need to understand all of
-those classes completely, one just needs to identify e.g. the relevant parts of
-the relevant ancestor methods. Instead of manually reading all of that code, an
-LLM can read it for you, and extract the relevant parts, and make useful
-suggestions.
+### True negative: Why did Jacqueline prevent Picasso's children Claude and Paloma from attending his funeral?
+
+Our system's answer:
+`ANSWER: Jacqueline prevented Picasso's children Claude and Paloma from attending his funeral. There is no information provided that explains why she did so. <NO ANSWER>`
 
 ## Related work and differences
 
@@ -119,14 +158,13 @@ already able to research questions in a recursive fashion:
 
 One difference here is that I want to extend the idea so that it can use any
 API, not just the single API of Bing Search, or the pre-defined APIs of ChatGPT
-Plugins. Although the web contains nearly "all" possible information, there are
-still plenty of databases that are not indexed by web search engines, for
-example legal databases or medical databases, or internal corporate
-documentation. Furthermore, information on the web may not be trustworthy and we
-may want to limit our LLM's knowledge base to a smaller set of trustworthy
-sources. One can also imagine that eventually websites themselves will contain
-prompt injection attacks, so we may not want to use the entire web for security
-reasons.
+Plugins. There are still plenty of databases that are not indexed by web search
+engines, for example: legal databases, medical databases, internal corporate
+documentation, an individual's tax documents, etc. Furthermore, information on
+the web may not be trustworthy and we may want to limit our LLM's knowledge base
+to a smaller set of trustworthy sources. One can also imagine that eventually
+websites themselves will contain prompt injection attacks, so we may not want to
+use the entire web for security reasons.
 
 Another difference is that I intend to make a stricter requirement that every
 claim is cited, whereas ChatGPT Browse or Bing Search do not seem to have such a

@@ -1,0 +1,29 @@
+Question: 'what songs by the goo goo dolls has phoebe bridgers covered?'
+Researching Wikipedia pages:
+1. Goo Goo Dolls
+2. Phoebe Bridgers
+3. List of cover songs by Phoebe Bridgers
+
+Researching Wikipedia page: Goo Goo Dolls
+Reading 2122 tokens
+Reading 2145 tokens
+Reading 1535 tokens
+Reading 1670 tokens
+Reading 1353 tokens
+
+Researching Wikipedia page: Phoebe Bridgers
+Reading 1992 tokens
+Reading 2283 tokens
+Extracted and validated: Phoebe Bridgers covered "Iris" by Goo Goo Dolls.
+Reading 2280 tokens
+Reading 1657 tokens
+Extracted and validated: Phoebe Bridgers' cover of "Iris" as a single specifically raised money for Stacey Abrams' Fair Fight Action.
+Reading 1126 tokens
+
+Researching Wikipedia page: List of cover songs by Phoebe Bridgers
+Error:  404
+
+ANSWER: Phoebe Bridgers has covered "Iris" by Goo Goo Dolls. 
+CITATIONS:
+- "Phoebe Bridgers covered "Iris" by Goo Goo Dolls." from the Wikipedia page Phoebe Bridgers.
+- "Phoebe Bridgers' cover of "Iris" as a single specifically raised money for Stacey Abrams' Fair Fight Action." from the Wikipedia page Phoebe Bridgers.
