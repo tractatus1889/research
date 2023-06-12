@@ -188,24 +188,24 @@ Our system's answer:
 
 ## Related work and differences
 
-This is basically the same as ChatGPT Browse, ChatGPT Plugins, or Bing Search,
-which force the LLM to cite its answers from the web. ChatGPT Browse is also
-already able to research questions in a recursive fashion:
+This is basically the same as ChatGPT Browse or Bing Search, which force the LLM
+to cite its answers from the web. ChatGPT Browse is also already able to
+research questions in a recursive fashion:
 [example](https://chat.openai.com/share/1c2a4082-d566-4e0f-9477-a44e9865b2c6).
 
 One difference here is that I want to extend the idea so that it can use any
 API, not just the single API of Bing Search, or the pre-defined APIs of ChatGPT
 Plugins. There are still plenty of databases that are not indexed by web search
-engines, for example: legal databases, medical databases, internal corporate
-documentation, an individual's tax documents, etc. Furthermore, information on
-the web may not be trustworthy and we may want to limit our LLM's knowledge base
-to a smaller set of trustworthy sources. One can also imagine that eventually
-websites themselves will contain prompt injection attacks, so we may not want to
-use the entire web for security reasons.
+engines or that are non-public, for example: legal databases, medical databases,
+internal corporate documentation, an individual's tax documents, etc.
+Furthermore, information on the web may not be trustworthy and we may want to
+limit our LLM's knowledge base to a smaller set of trustworthy sources. One can
+also imagine that eventually websites themselves will contain prompt injection
+attacks, so we may not want to use the entire web for security reasons.
 
 Another difference is that I intend to make a stricter requirement that every
-claim is cited, whereas ChatGPT Browse or Bing Search do not seem to have such a
-strict requirement.
+single claim is cited, whereas ChatGPT Browse or Bing Search do not seem to have
+such a strict requirement.
 
 Another related project is the Berkeley
 [Gorilla](https://gorilla.cs.berkeley.edu/) project, which implements an LLM
