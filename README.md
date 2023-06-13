@@ -72,6 +72,11 @@ through many parent classes. Instead of a human engineer manually reading all of
 that code, an LLM can read it for you, and extract the relevant parts, and make
 useful suggestions.
 
+Note that LLM code assistance is also susceptible to hallucination. If you ask
+ChatGPT for a plausible library that doesn't exist, it will often just make one
+up. Thus code assistance will also benefit from similar hallucination mitigation
+techniques.
+
 ## Instructions
 
 1. You need an OpenAI account with API access.
