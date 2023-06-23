@@ -10,8 +10,8 @@ output is not necessarily grounded in fact, a phenomenon commonly known as
 
 For example, when you ask ChatGPT the question:
 
-> Why did Jacqueline prevent Picasso's children Claude and Paloma from attending
-> his funeral?
+> Why did Jacqueline Roque prevent Picasso's children Claude and Paloma from
+> attending his funeral?
 
 [It responds](https://chat.openai.com/share/b565b242-057b-4785-964b-f4884401b94c):
 
